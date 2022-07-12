@@ -1,4 +1,6 @@
 
+import socket
+import ssl
 from websocket import create_connection
 from requests import post
 
@@ -11,7 +13,7 @@ class WS(threading.Thread):
     def __init__(self, address=None, user_name=None, update_orders_cb=None):
         threading.Thread.__init__(self)
         self.address = address or os.getenv('WS_ADDRESS')
-        self._ws = create_connection(address)
+        self._ws = create_connection(address, sockopt=((socket.IPPROTO_TCP, socket.TCP_NODELAY, 1),))
         self.user_name = user_name
         self.update_orders_cb = update_orders_cb
         self.stop_event = threading.Event()

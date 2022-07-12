@@ -69,10 +69,9 @@ class MainApp():
 
         # init websocket
         address = os.getenv('WS_ADDRESS')
-        self._ws = ws.WS(address=address,
-                         user_name=self.user_name,
-                         update_orders_cb=self.update_orders_cb)
-
+        print ("Connecting to websocket as {}...".format(address))
+        self._ws = ws.WS(address=address, user_name=self.user_name,update_orders_cb=self.update_orders_cb)
+ 
         # setup the main gui window
         self._gui.setupMainWindow()
 

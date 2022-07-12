@@ -2,7 +2,7 @@ import serial
 import time
 import re
 
-ser = serial.Serial('/dev/ttyS0',115200)
+ser = serial.Serial('/dev/ttyUSB2',115200)
 ser.flushInput()
 
 regex = r"(\+CGPSINFO: )[^\\]*"
